@@ -6,22 +6,24 @@ const expressEdge = require('express-edge');
 
 const app = express();
 
-app.use(expressEdge);
+app.use(express.static('public'));
+app.use(expressEdge.engine);
+app.set('views', __dirname + '/views');
 
 app.get('/', (req, res) => {
-    res.render('index');
+    res.render('home');
     });
 
 app.get('/about', (req, res) => {
-    res.sendFile(__dirname + '/views/about.html');
+    res.sendFile(__dirname + '/pages/about.html');
     });
 
 app.get('/contact', (req, res) => {
-    res.sendFile(__dirname + '/views/contact.html');
+    res.sendFile(__dirname + '/pages/contact.html');
     });
 
 app.get('/post', (req, res) => {
-    res.sendFile(__dirname + '/views/post.html');
+    res.sendFile(__dirname + '/pages/post.html');
     });
 
 app.listen(4000, () => {
