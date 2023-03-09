@@ -2,12 +2,14 @@ const path = require('path');
 
 const express = require('express');
 
+const expressEdge = require('express-edge');
+
 const app = express();
 
-app.use(express.static('public'));
+app.use(expressEdge);
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/views/home.html');
+    res.render('index');
     });
 
 app.get('/about', (req, res) => {
